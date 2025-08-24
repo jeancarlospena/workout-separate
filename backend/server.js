@@ -15,7 +15,8 @@ dotenv.config()
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const originUrl = process.env.ORIGIN_URL || "http://localhost:5173"
+// const originUrl = process.env.ORIGIN_URL || "http://localhost:5173"
+const originUrl = "http://localhost:5173"
 
 
 
