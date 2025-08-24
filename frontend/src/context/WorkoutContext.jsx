@@ -15,6 +15,8 @@ const WorkoutContextProvider = (props) => {
 
   const loadLogs = async () => {
     console.log("from load logs /workout/log");
+    return;
+
     try {
       API.get(backendUrl + "/api/workout/log")
         .then((response) => {
