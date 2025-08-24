@@ -17,6 +17,7 @@ const Login = () => {
     try {
       API.post(backendUrl + "/api/user/login", loginData)
         .then((response) => {
+          console.log(response.data);
           if (response.data.success) {
             updateUser(response.data.user);
           }
@@ -27,8 +28,10 @@ const Login = () => {
           // Handle registration errors, e.g., display error messages to the user
           // console.log(error.response.data);
           setError(error.response.data.message);
+          console.log(error.response.data);
         });
     } catch (error) {
+      console.log(error);
       setError("Unable to login now, try again later");
     }
   };

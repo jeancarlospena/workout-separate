@@ -32,6 +32,7 @@ const UserContextProvider = (props) => {
   API.interceptors.response.use(
     (response) => response,
     (error) => {
+      console.log("intercepter=============");
       console.log(error.response.data);
 
       if (error.response && error.response.status === 401) {
