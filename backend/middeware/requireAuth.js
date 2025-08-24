@@ -4,8 +4,7 @@ import { sql } from "../config/db.js"
 
 export const requireAuth = async (req, res, next) => {
   const token = req.cookies.jwt
-  console.log('--------------------------------------')
-  console.log(token)
+
   if (!token) {
     console.log('User not logged in')
     return res.status(401).json({ success: false, message: 'Need to login' })
