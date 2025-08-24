@@ -23,7 +23,7 @@ const originUrl = process.env.ORIGIN_URL || "http://localhost:5173"
 // MIDDLEWARES
 app.use(express.json())
 app.use(cors({
-  origin: originUrl, // or your frontend URL
+  origin: "https://workout-xi-roan.vercel.app", // or your frontend URL
   credentials: true// allow cookies to be sent
 }));
 app.use(cookieParser())
