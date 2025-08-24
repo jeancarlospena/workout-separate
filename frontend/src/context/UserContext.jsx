@@ -4,12 +4,14 @@ import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import jwt_decode from "jwt-decode";
 
+const backendUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 const API = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: backendUrl,
   withCredentials: true, // send/receive cookies
 });
 
-const backendUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
+// console.log(import.meta.env.VITE_TEST);
 
 export const UserContext = createContext();
 
