@@ -27,7 +27,7 @@ app.use(express.json())
 //   credentials: true// allow cookies to be sent
 // }));
 app.use(cookieParser())
-app.use(cors())
+app.use(cors({ credentials: true }))
 app.use(helmet())
 app.use(morgan('dev')) // log the requests
 
