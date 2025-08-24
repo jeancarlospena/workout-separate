@@ -10,7 +10,6 @@ const API = axios.create({
   baseURL: backendUrl,
   withCredentials: true, // send/receive cookies
 });
-
 // console.log(import.meta.env.VITE_TEST);
 
 export const UserContext = createContext();
