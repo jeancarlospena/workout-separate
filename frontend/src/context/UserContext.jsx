@@ -1,0 +1,82 @@
+import axios from "axios";
+import { useContext } from "react";
+import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+// import jwt_decode from "jwt-decode";
+
+const API = axios.create({
+  baseURL: "http://localhost:3000",
+  withCredentials: true, // send/receive cookies
+});
+
+const backendUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
+export const UserContext = createContext();
+
+const UserContextProvider = (props) => {
+  const [user, setUser] = useState(null);
+  const [authLoaded, setAuthLoaded] = useState(false);
+  const navigate = useNavigate();
+
+  const updateUser = (user) => {
+    if (user) {
+      setUser(user);
+    } else {
+      setUser(null);
+    }
+  };
+
+  // response interceptor
+  API.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response && error.response.status === 401) {
+        // JWT expired or invalid
+        console.log("Session expired, logging out...");
+        logoutUser();
+      }
+      // return Promise.reject(error);
+    }
+  );
+
+  const logoutUser = async () => {
+    API.post(backendUrl + "/api/user/logout")
+      .then((response) => {
+        setUser(null);
+        navigate("/");
+      })
+      .catch((error) => {
+        setUser(null);
+        navigate("/");
+      });
+  };
+
+  useEffect(() => {
+    try {
+      API.post(backendUrl + "/api/user/auth")
+        .then((response) => {
+          if (response.data.success) {
+            setUser(response.data.user);
+          }
+          setAuthLoaded(true);
+        })
+        .catch((error) => {
+          setAuthLoaded(true);
+        });
+    } catch (error) {}
+  }, []);
+
+  const value = {
+    backendUrl,
+    API,
+    logoutUser,
+    user,
+    authLoaded,
+    updateUser,
+  };
+  return (
+    <UserContext.Provider value={value}>{props.children}</UserContext.Provider>
+  );
+};
+
+export default UserContextProvider;
