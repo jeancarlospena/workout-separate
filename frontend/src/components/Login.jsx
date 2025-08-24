@@ -6,8 +6,8 @@ import { UserContext } from "../context/UserContext.jsx";
 
 const Login = () => {
   const { backendUrl, API, updateUser } = useContext(UserContext);
-  const [email, setEmail] = useState("ariel@email.com");
-  const [password, setPassword] = useState("123123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const onSubmitHandler = async (e) => {

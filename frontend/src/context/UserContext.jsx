@@ -10,7 +10,6 @@ const API = axios.create({
   baseURL: backendUrl,
   withCredentials: true, // send/receive cookies
 });
-// console.log(import.meta.env.VITE_TEST);
 
 export const UserContext = createContext();
 
@@ -31,12 +30,8 @@ const UserContextProvider = (props) => {
   API.interceptors.response.use(
     (response) => response,
     (error) => {
-      console.log("intercepter=============");
-      console.log(error.response.data);
-
       if (error.response && error.response.status === 401) {
         // JWT expired or invalid
-        console.log("Session expired, logging out...");
         logoutUser();
       }
       // return Promise.reject(error);
@@ -46,12 +41,10 @@ const UserContextProvider = (props) => {
   const logoutUser = async () => {
     API.post(backendUrl + "/api/user/logout")
       .then((response) => {
-        console.log(response.data);
         setUser(null);
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.response.data);
         setUser(null);
         navigate("/");
       });
@@ -61,7 +54,6 @@ const UserContextProvider = (props) => {
     try {
       API.post(backendUrl + "/api/user/auth")
         .then((response) => {
-          console.log(response.data);
           if (response.data.success) {
             setUser(response.data.user);
           }
@@ -70,9 +62,7 @@ const UserContextProvider = (props) => {
         .catch((error) => {
           setAuthLoaded(true);
         });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }, []);
 
   const value = {
