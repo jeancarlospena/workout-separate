@@ -12,12 +12,12 @@ const Login = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    console.log("from submit handle to login user");
     const loginData = { email, password };
     try {
       API.post(backendUrl + "/api/user/login", loginData)
         .then((response) => {
-          console.log(response.data);
+          console.log(response);
           if (response.data.success) {
             updateUser(response.data.user);
           }
@@ -28,7 +28,7 @@ const Login = () => {
           // Handle registration errors, e.g., display error messages to the user
           // console.log(error.response.data);
           setError(error.response.data.message);
-          console.log(error.response.data);
+          console.log(error);
         });
     } catch (error) {
       console.log(error);

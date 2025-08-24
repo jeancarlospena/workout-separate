@@ -14,15 +14,19 @@ const WorkoutContextProvider = (props) => {
   const [workoutLogsError, setWorkoutLogsError] = useState(null);
 
   const loadLogs = async () => {
+    console.log("from load logs /workout/log");
     try {
       API.get(backendUrl + "/api/workout/log")
         .then((response) => {
+          console.log(response);
           setWorkoutLogs(response.data.workoutLogs);
         })
         .catch((error) => {
+          console.log(error);
           setWorkoutLogsError("Unable to load workouts");
         });
     } catch (error) {
+      console.log(error);
       setWorkoutLogsError("Unable to load workouts");
     }
   };
@@ -31,8 +35,6 @@ const WorkoutContextProvider = (props) => {
     try {
       API.delete(backendUrl + `/api/workout/log/${sessionId}`)
         .then((response) => {
-          console.log(response.data);
-
           loadLogs();
         })
         .catch((error) => {
@@ -44,15 +46,19 @@ const WorkoutContextProvider = (props) => {
   };
 
   const updateWorkouts = async () => {
+    console.log("from updateworkouts /api/workout");
     try {
       API.get(backendUrl + "/api/workout")
         .then((response) => {
+          console.log(response);
           setAllWorkouts(response.data.workouts);
         })
         .catch((error) => {
+          console.log(error);
           setWorkoutError("Unable to load workouts");
         });
     } catch (error) {
+      console.log(error);
       setWorkoutError("Unable to load workouts");
     }
   };
