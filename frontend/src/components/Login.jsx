@@ -27,7 +27,7 @@ const Login = () => {
           // console.error("Registration failed:", error.response.data);
           // Handle registration errors, e.g., display error messages to the user
           // console.log(error.response.data);
-          setError(error.response.data.message);
+          // setError(error.response.data.message);
           console.log(error);
         });
     } catch (error) {
