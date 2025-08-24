@@ -7,9 +7,8 @@ export const requireAuth = async (req, res, next) => {
   console.log('--------------------------------------')
   console.log(token)
   if (!token) {
-    res.status(401).json({ success: false, message: 'Need to login' })
     console.log('User not logged in')
-    return
+    return res.status(401).json({ success: false, message: 'Need to login' })
   }
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
@@ -17,8 +16,7 @@ export const requireAuth = async (req, res, next) => {
       SELECT * FROM users WHERE id=${decoded.id}
       `
     if (!user[0]) {
-      res.status(401).json({ success: false, message: "No such user" })
-      return
+      return res.status(401).json({ success: false, message: "No such user" })
     }
     delete user[0].password
     req.user = user[0]
