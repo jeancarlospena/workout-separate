@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 // import jwt_decode from "jwt-decode";
 
 // const backendUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
-const backendUrl = "https://workout-8dj5.vercel.app/";
+const backendUrl = "https://workout-8dj5.vercel.app";
 
 const API = axios.create({
   baseURL: backendUrl,
