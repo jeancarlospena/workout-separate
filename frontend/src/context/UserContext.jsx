@@ -32,6 +32,8 @@ const UserContextProvider = (props) => {
   API.interceptors.response.use(
     (response) => response,
     (error) => {
+      console.log(error.response.data);
+
       if (error.response && error.response.status === 401) {
         // JWT expired or invalid
         console.log("Session expired, logging out...");
@@ -44,10 +46,12 @@ const UserContextProvider = (props) => {
   const logoutUser = async () => {
     API.post(backendUrl + "/api/user/logout")
       .then((response) => {
+        console.log(response.data);
         setUser(null);
         navigate("/");
       })
       .catch((error) => {
+        console.log(error.response.data);
         setUser(null);
         navigate("/");
       });
@@ -57,6 +61,7 @@ const UserContextProvider = (props) => {
     try {
       API.post(backendUrl + "/api/user/auth")
         .then((response) => {
+          console.log(response.data);
           if (response.data.success) {
             setUser(response.data.user);
           }
@@ -65,7 +70,9 @@ const UserContextProvider = (props) => {
         .catch((error) => {
           setAuthLoaded(true);
         });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   const value = {

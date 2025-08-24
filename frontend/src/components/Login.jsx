@@ -12,6 +12,7 @@ const Login = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    console.log(email, password);
     const loginData = { email, password };
     try {
       API.post(backendUrl + "/api/user/login", loginData)
