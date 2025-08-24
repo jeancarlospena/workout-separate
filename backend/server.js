@@ -15,19 +15,19 @@ dotenv.config()
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-// const originUrl = process.env.ORIGIN_URL || "http://localhost:5173"
-const originUrl = "http://localhost:5173"
+const originUrl = process.env.ORIGIN_URL || "http://localhost:5173"
+// const originUrl = "http://localhost:5173"
 
 
 
 // MIDDLEWARES
 app.use(express.json())
-app.use(cors({
-  // origin: originUrl, // or your frontend URL
-  credentials: true// allow cookies to be sent
-}));
+// app.use(cors({
+//   origin: originUrl, // or your frontend URL
+//   credentials: true// allow cookies to be sent
+// }));
 app.use(cookieParser())
-// app.use(cors)
+app.use(cors)
 app.use(helmet())
 app.use(morgan('dev')) // log the requests
 
