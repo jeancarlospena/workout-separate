@@ -47,6 +47,7 @@ const WorkoutContextProvider = (props) => {
 
   const updateWorkouts = async () => {
     console.log("from updateworkouts /api/workout");
+    return;
     try {
       API.get(backendUrl + "/api/workout")
         .then((response) => {
