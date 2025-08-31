@@ -24,7 +24,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 // const originUrl = process.env.DEV_ENV === 'development' ? "http://localhost:5174" : process.env.ORIGIN_URL
 const originUrl = process.env.DEV_ENV === 'development' ? "http://localhost:3000" : process.env.ORIGIN_URL
-// const originUrl = 'https://workout2-mj2s.vercel.app'
 
 
 
@@ -89,9 +88,9 @@ app.use('/api/workout', workoutRoutes)
 const __filename = fileURLToPath(import.meta.url);
 // const __dirname = dirname(__filename);
 const __dirname = path.resolve();
-app.get('/', (req, res) => {
-  res.status(200).json({ filename: __filename, theurl: originUrl, dirname: __dirname, joined: path.join(__dirname, "./frontend/dist") })
-})
+// app.get('/', (req, res) => {
+//   res.status(200).json({ filename: __filename, theurl: originUrl, dirname: __dirname, joined: path.join(__dirname, "./frontend/dist") })
+// })
 // // Serve frontend static files
 app.use(express.static(path.join(__dirname, "/frontend/dist"))); // or "build" if CRA
 // Catch-all route (so React Router works)
