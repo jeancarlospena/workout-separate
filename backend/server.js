@@ -23,8 +23,8 @@ dotenv.config()
 const app = express();
 const PORT = process.env.PORT || 3000;
 // const originUrl = process.env.DEV_ENV === 'development' ? "http://localhost:5174" : process.env.ORIGIN_URL
-// const originUrl = process.env.DEV_ENV === 'development' ? "http://localhost:3000" : process.env.ORIGIN_URL
-const originUrl = 'https://workout2-mj2s.vercel.app'
+const originUrl = process.env.DEV_ENV === 'development' ? "http://localhost:3000" : process.env.ORIGIN_URL
+// const originUrl = 'https://workout2-mj2s.vercel.app'
 
 
 
