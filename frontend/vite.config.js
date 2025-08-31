@@ -5,5 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: './', // relative paths, works when served from a subfolder,
-
+  build: {
+    outDir: '../dist',   // relative to frontend folder
+    emptyOutDir: true,   // cleans it before rebuilding
+  }
 })
