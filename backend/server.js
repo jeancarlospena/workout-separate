@@ -11,11 +11,17 @@ import { aj } from './lib/arcjet.js'
 import initDB from './models/models.js'
 import cookieParser from 'cookie-parser'
 
+// SERVING SERVING SERVING SERVING
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+// SERVING SERVING SERVING SERVING
+
 dotenv.config()
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const originUrl = process.env.ORIGIN_URL || "http://localhost:5173"
+const originUrl = process.env.DEV_ENV === 'development' ? "http://localhost:5174" : process.env.ORIGIN_URL
 
 
 
@@ -63,9 +69,32 @@ app.use(async (req, res, next) => {
 })
 
 
-app.get('/', (req, res) => {
-  res.status(200).json({ message: 'ok you are here', theurl: originUrl })
-})
+// app.get('/', (req, res) => {
+//   res.status(200).json({ message: 'ok you are here', theurl: originUrl })
+// })
+
+
+// SERVING FROM THE SAME SITE
+// SERVING FROM THE SAME SITE
+// SERVING FROM THE SAME SITE
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, "./frontend/dist"))); // or "build" if CRA
+
+// Catch-all route (so React Router works)
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./frontend/dist/index.html"));
+});
+
+
+// SERVING FROM THE SAME SITE
+// SERVING FROM THE SAME SITE
+// SERVING FROM THE SAME SITE
+
+
+
 // routes
 app.use('/api/products', productRoutes)
 app.use('/api/user', userRoutes)
