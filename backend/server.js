@@ -84,9 +84,9 @@ const __dirname = dirname(__filename);
 app.use(express.static(path.join(__dirname, "./frontend/dist"))); // or "build" if CRA
 // Catch-all route (so React Router works)
 
-app.get('/', (req, res) => {
-  res.json({ message: 'well well, you have reached' })
-})
+// app.get('/', (req, res) => {
+//   res.json({ message: 'well well, you have reached' })
+// })
 // app.get("/", (req, res) => {
 //   res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
 //   // res.sendFile(path.join(__dirname, "./frontend/dist/index.html"));
