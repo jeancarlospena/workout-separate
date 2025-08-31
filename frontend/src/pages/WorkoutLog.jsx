@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../context/UserContext.jsx";
 
 const WorkoutLog = () => {
-  const { API, backendUrl } = useContext(UserContext);
+  const { API } = useContext(UserContext);
   const navigate = useNavigate();
   const { allWorkouts, loadLogs } = useContext(WorkoutContext);
   const { id } = useParams();
@@ -28,7 +28,7 @@ const WorkoutLog = () => {
     // weight_per_set NUMERIC(5, 2)[],
     // )`
     const trackerData = { workoutTracker, workoutId: workout.id };
-    API.post(backendUrl + "/api/workout/log", trackerData)
+    API.post("/workout/log", trackerData)
       .then((response) => {
         loadLogs();
         navigate("/");

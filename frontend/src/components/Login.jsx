@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../context/UserContext.jsx";
 
 const Login = () => {
-  const { backendUrl, API, updateUser } = useContext(UserContext);
+  const { API, updateUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
     const loginData = { email, password };
     try {
-      API.post(backendUrl + "/api/user/login", loginData)
+      API.post("/user/login", loginData)
         .then((response) => {
           if (response.data.success) {
             updateUser(response.data.user);

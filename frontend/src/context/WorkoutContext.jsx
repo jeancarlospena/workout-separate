@@ -5,7 +5,7 @@ import { UserContext } from "./UserContext.jsx";
 export const WorkoutContext = createContext();
 
 const WorkoutContextProvider = (props) => {
-  const { API, backendUrl, authLoaded, user } = useContext(UserContext);
+  const { API, authLoaded, user } = useContext(UserContext);
   const [allWorkouts, setAllWorkouts] = useState(null);
   const [workoutError, setWorkoutError] = useState(null);
   const [exerciseList, setExerciseList] = useState(null);
@@ -15,7 +15,7 @@ const WorkoutContextProvider = (props) => {
 
   const loadLogs = async () => {
     try {
-      API.get(backendUrl + "/api/workout/log")
+      API.get("/workout/log")
         .then((response) => {
           setWorkoutLogs(response.data.workoutLogs);
         })
@@ -29,7 +29,7 @@ const WorkoutContextProvider = (props) => {
 
   const deleteLog = async (sessionId) => {
     try {
-      API.delete(backendUrl + `/api/workout/log/${sessionId}`)
+      API.delete(`/workout/log/${sessionId}`)
         .then((response) => {
           loadLogs();
         })
@@ -43,7 +43,7 @@ const WorkoutContextProvider = (props) => {
 
   const updateWorkouts = async () => {
     try {
-      API.get(backendUrl + "/api/workout")
+      API.get("/workout")
         .then((response) => {
           setAllWorkouts(response.data.workouts);
         })
@@ -57,7 +57,7 @@ const WorkoutContextProvider = (props) => {
 
   const deleteWorkout = async (workoutId) => {
     try {
-      API.delete(backendUrl + `/api/workout/${workoutId}`)
+      API.delete(`/workout/${workoutId}`)
         .then((response) => {
           updateWorkouts();
         })
@@ -71,7 +71,7 @@ const WorkoutContextProvider = (props) => {
 
   const loadExercises = async () => {
     try {
-      API.get(backendUrl + "/api/workout/exercises")
+      API.get("/workout/exercises")
         .then((response) => {
           setExerciseList(response.data.exercises);
         })
@@ -85,7 +85,7 @@ const WorkoutContextProvider = (props) => {
 
   const deleteExercise = async (exerciseId) => {
     try {
-      API.delete(backendUrl + `/api/workout/exercises/${exerciseId}`)
+      API.delete(`/api/workout/exercises/${exerciseId}`)
         .then((response) => {
           loadExercises();
         })

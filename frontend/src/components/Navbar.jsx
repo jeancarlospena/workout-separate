@@ -3,17 +3,7 @@ import { useContext } from "react";
 import { UserContext } from "../context/UserContext.jsx";
 
 const Navbar = () => {
-  const { user, backendUrl, API, logoutUser } = useContext(UserContext);
-
-  const testAuth = () => {
-    API.post(backendUrl + "/api/user/auth")
-      .then((response) => {
-        console.log(response.data.user);
-      })
-      .catch((error) => {
-        console.log(error.response.data.message);
-      });
-  };
+  const { user, API, logoutUser } = useContext(UserContext);
 
   return (
     <div className="navigator-container">

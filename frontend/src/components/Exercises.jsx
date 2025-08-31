@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { WorkoutContext } from "../context/WorkoutContext.jsx";
 
 const Exercises = () => {
-  const { API, backendUrl } = useContext(UserContext);
+  const { API } = useContext(UserContext);
   const { deleteExercise, loadExercises, exerciseList, exerciseError } =
     useContext(WorkoutContext);
   const [exerciseName, setExerciseName] = useState("");
@@ -20,7 +20,7 @@ const Exercises = () => {
     }
     const exerciseData = { exerciseName, exerciseDescription, muscleGroup };
     try {
-      API.post(backendUrl + "/api/workout/exercises", exerciseData)
+      API.post("/workout/exercises", exerciseData)
         .then((response) => {
           loadExercises();
           setExerciseDescription("");

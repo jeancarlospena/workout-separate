@@ -4,10 +4,10 @@ import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import jwt_decode from "jwt-decode";
 
-const backendUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
+const devModeUrl = "/api";
 
 const API = axios.create({
-  baseURL: backendUrl,
+  baseURL: devModeUrl,
   withCredentials: true, // send/receive cookies
 });
 
@@ -39,7 +39,7 @@ const UserContextProvider = (props) => {
   );
 
   const logoutUser = async () => {
-    API.post(backendUrl + "/api/user/logout")
+    API.post("/user/logout")
       .then((response) => {
         setUser(null);
         navigate("/");
@@ -52,7 +52,7 @@ const UserContextProvider = (props) => {
 
   useEffect(() => {
     try {
-      API.post(backendUrl + "/api/user/auth")
+      API.post("/user/auth")
         .then((response) => {
           if (response.data.success) {
             setUser(response.data.user);
@@ -66,7 +66,6 @@ const UserContextProvider = (props) => {
   }, []);
 
   const value = {
-    backendUrl,
     API,
     logoutUser,
     user,

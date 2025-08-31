@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../context/UserContext.jsx";
 
 const Register = () => {
-  const { backendUrl, updateUser, API } = useContext(UserContext);
+  const { updateUser, API } = useContext(UserContext);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,7 +27,7 @@ const Register = () => {
     };
 
     try {
-      API.post(backendUrl + "/api/user/register", registrationData)
+      API.post("/user/register", registrationData)
         .then((response) => {
           if (response.data.success) {
             updateUser(response.data.user);

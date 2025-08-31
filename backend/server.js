@@ -11,6 +11,17 @@ import { aj } from './lib/arcjet.js'
 import initDB from './models/models.js'
 import cookieParser from 'cookie-parser'
 
+
+// ===================
+import {
+  match,
+  pathToRegexp,
+  compile,
+  parse,
+  stringify,
+} from "path-to-regexp";
+const fn = match("/*splat");
+
 // SERVING SERVING SERVING SERVING
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -76,6 +87,14 @@ app.use(async (req, res, next) => {
 // })
 
 
+
+// routes
+app.use('/api/products', productRoutes)
+app.use('/api/user', userRoutes)
+app.use('/api/workout', workoutRoutes)
+
+
+
 // SERVING FROM THE SAME SITE
 // SERVING FROM THE SAME SITE
 // SERVING FROM THE SAME SITE
@@ -89,13 +108,15 @@ const __dirname = path.resolve();
 console.log('======================')
 console.log(path.join(__dirname, "frontend/dist/index.html"));
 // // Serve frontend static files
-app.use(express.static(path.join(__dirname, "../frontend/dist"))); // or "build" if CRA
+app.use(express.static(path.join(__dirname, "/frontend/dist"))); // or "build" if CRA
 // Catch-all route (so React Router works)
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
+app.get('/{*splat}', (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
   // res.sendFile(path.join(__dirname, "./frontend/dist/index.html"));
 });
+
+
 // =============
 
 
@@ -103,13 +124,6 @@ app.get("/", (req, res) => {
 // SERVING FROM THE SAME SITE
 // SERVING FROM THE SAME SITE
 // SERVING FROM THE SAME SITE
-
-
-
-// routes
-app.use('/api/products', productRoutes)
-app.use('/api/user', userRoutes)
-app.use('/api/workout', workoutRoutes)
 
 
 

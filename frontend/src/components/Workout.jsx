@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { WorkoutContext } from "../context/WorkoutContext.jsx";
 
 const Workout = () => {
-  const { API, backendUrl } = useContext(UserContext);
+  const { API } = useContext(UserContext);
   const [workoutName, setWorkoutName] = useState("");
   const [workoutDescription, setWorkoutDescription] = useState("");
 
@@ -37,7 +37,7 @@ const Workout = () => {
     const workoutData = { workoutName, selectedExercises, workoutDescription };
     // return;
     try {
-      API.post(backendUrl + "/api/workout", workoutData)
+      API.post("/workout", workoutData)
         .then((response) => {
           setSelectedExercises([defaultExercise]);
           updateWorkouts();
