@@ -4,7 +4,7 @@ import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import jwt_decode from "jwt-decode";
 
-const devModeUrl = import.meta.env.VITE_API_DEV_URL || "/api";
+const devModeUrl = "/api";
 
 const API = axios.create({
   baseURL: devModeUrl,
