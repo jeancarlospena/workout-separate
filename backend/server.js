@@ -75,8 +75,6 @@ app.use("/api", async (req, res, next) => {
 //   res.status(200).json({ message: 'ok you are here', theurl: originUrl })
 // })
 
-
-
 // routes
 app.use('/api/products', productRoutes)
 app.use('/api/user', userRoutes)
@@ -87,24 +85,23 @@ app.use('/api/workout', workoutRoutes)
 // serving html
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
 // const __dirname = path.resolve();
 // app.get('/', (req, res) => {
 //   res.status(200).json({ filename: __filename, theurl: originUrl, dirname: __dirname, joined: path.join(__dirname, "./frontend/dist") })
 // })
-app.get('/', (req, res) => {
-  res.json({ message: 'hello there' })
-})
+// app.get('/', (req, res) => {
+//   res.json({ message: 'hello there' })
+// })
 // // Serve frontend static files
-app.use(express.static(path.join(__dirname, ".", "dist"))); // or "build" if CRA
+app.use(express.static(path.join(__dirname, ".", "public"))); // or "build" if CRA
 // Catch-all route (so React Router works)
 
 
+
 app.get('/{*splat}', (req, res) => {
-  res.sendFile(path.join(__dirname, ".", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, ".", "public", "index.html"));
 });
-
-
-
 
 
 
