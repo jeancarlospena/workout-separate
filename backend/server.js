@@ -12,16 +12,6 @@ import initDB from './models/models.js'
 import cookieParser from 'cookie-parser'
 
 
-// ===================
-import {
-  match,
-  pathToRegexp,
-  compile,
-  parse,
-  stringify,
-} from "path-to-regexp";
-const fn = match("/*splat");
-
 // SERVING SERVING SERVING SERVING
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -95,35 +85,23 @@ app.use('/api/workout', workoutRoutes)
 
 
 
-// SERVING FROM THE SAME SITE
-// SERVING FROM THE SAME SITE
-// SERVING FROM THE SAME SITE
-// =============
+// serving html
 const __filename = fileURLToPath(import.meta.url);
 // const __dirname = dirname(__filename);
 const __dirname = path.resolve();
 // app.get('/', (req, res) => {
 //   res.status(200).json({ filename: __filename, theurl: originUrl, dirname: __dirname, joined: path.join(__dirname, "./frontend/dist") })
 // })
-console.log('======================')
-console.log(path.join(__dirname, "frontend/dist/index.html"));
 // // Serve frontend static files
 app.use(express.static(path.join(__dirname, "/frontend/dist"))); // or "build" if CRA
 // Catch-all route (so React Router works)
 
 app.get('/{*splat}', (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-  // res.sendFile(path.join(__dirname, "./frontend/dist/index.html"));
 });
 
 
-// =============
 
-
-
-// SERVING FROM THE SAME SITE
-// SERVING FROM THE SAME SITE
-// SERVING FROM THE SAME SITE
 
 
 
