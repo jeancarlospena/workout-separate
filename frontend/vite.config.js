@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   base: './', // relative paths, works when served from a subfolder,
   build: {
-    outDir: '../dist',   // relative to frontend folder
+    outDir: '../public',   // relative to frontend folder
     emptyOutDir: true,   // cleans it before rebuilding
   }
 })
