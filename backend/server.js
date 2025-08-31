@@ -42,7 +42,12 @@ app.use(morgan('dev')) // log the requests
 app.use("/api", async (req, res, next) => {
   try {
     const decision = await aj.protect(req, {
-      requested: 1 // specifies that each request consumes 1 token
+      requested: 1, // specifies that each request consumes 1 token
+      limit: { // depends on Arcjet plan
+        type: "fixed_window",
+        interval: "1s",
+        max: 50 // allow 50 req/s
+      }
     })
     if (decision.isDenied()) {
       if (decision.reason.isRateLimit()) {
@@ -74,6 +79,10 @@ app.use("/api", async (req, res, next) => {
 // app.get('/', (req, res) => {
 //   res.status(200).json({ message: 'ok you are here', theurl: originUrl })
 // })
+
+app.get('/api', (req, res) => {
+  res.json({ message: 'hola there' })
+})
 
 // routes
 app.use('/api/products', productRoutes)
