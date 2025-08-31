@@ -1,0 +1,37 @@
+.nutrition-container{
+  margin-top: 25px;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 15px;
+  background-color: var(--back_light);
+  border: 1px solid var(--outline_light);
+  font-size: var(--font-s);
+}
+
+.nutrition-container * {
+  margin-bottom: 15px;
+}
+
+ ul, ol {
+      list-style-position: outside; /* ensures bullets stay outside padding */
+      padding-left: 1.5em;          /* controls indentation */
+      margin-bottom: 1em;           /* spacing between lists */
+    }
+
+    li {
+      margin-bottom: 0.4em; /* space between items */
+    }
+
+    ul ul {
+      padding-left: 1.5em; /* extra indentation for nested lists */
+    }
+
+
+
+ol li{
+  margin-top: 15px;
+}
+
+.top-spacer-nutrition{
+  margin-top: 15px;
+}

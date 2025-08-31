@@ -1,0 +1,24 @@
+.weight-reps p:not(:first-child){
+  margin-left: 15px;
+}
+
+.weight-reps{
+  display: flex;
+}
+
+.log-section{
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  width: 40%;
+  justify-content: space-between;
+  max-width: 290px;
+  margin-bottom: 10px;
+
+}
+
+
+
+.exercise-section{
+  margin-bottom: 5px;
+}

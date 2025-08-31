@@ -1,0 +1,26 @@
+.user-container{
+  color: var(--text_light);
+  max-width: 1600px;
+  margin: 0 auto 25px;
+  padding: 0 25px;
+}
+
+.btn{
+  background-color: rgb(94, 93, 93);
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-weight: bold;
+  /* border-style: none; */
+  border: 1px solid var(--outline_light);
+  cursor: pointer;
+  font-size: var(--font-sm);
+  margin-top: 15px;
+  border: none;
+  transition: .35s;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn:hover{
+  background-color: var(--col5);
+}
