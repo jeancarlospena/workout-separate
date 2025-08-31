@@ -11,7 +11,7 @@ import { aj } from './lib/arcjet.js'
 import initDB from './models/models.js'
 import cookieParser from 'cookie-parser'
 
-
+// test
 // SERVING SERVING SERVING SERVING
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -40,7 +40,7 @@ app.use(helmet())
 app.use(morgan('dev')) // log the requests
 
 // apply arcjet rate-limit to all routes
-app.use(async (req, res, next) => {
+app.use("/api", async (req, res, next) => {
   try {
     const decision = await aj.protect(req, {
       requested: 1 // specifies that each request consumes 1 token
