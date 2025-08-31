@@ -29,10 +29,10 @@ const originUrl = process.env.DEV_ENV === 'development' ? "http://localhost:3000
 
 // MIDDLEWARES
 app.use(express.json())
-app.use(cors({
-  origin: originUrl, // or your frontend URL
-  credentials: true// allow cookies to be sent
-}));
+// app.use(cors({
+//   origin: originUrl, // or your frontend URL
+//   credentials: true// allow cookies to be sent
+// }));
 app.use(cookieParser())
 // app.use(cors({ credentials: true }))
 app.use(helmet())
