@@ -81,13 +81,15 @@ app.use(async (req, res, next) => {
 // SERVING FROM THE SAME SITE
 // =============
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __dirname = dirname(__filename);
+const __dirname = path.resolve();
 // app.get('/', (req, res) => {
 //   res.status(200).json({ filename: __filename, theurl: originUrl, dirname: __dirname, joined: path.join(__dirname, "./frontend/dist") })
 // })
-
+console.log('======================')
+console.log(path.join(__dirname, "frontend/dist/index.html"));
 // // Serve frontend static files
-app.use(express.static(path.join(__dirname, "./frontend/dist"))); // or "build" if CRA
+app.use(express.static(path.join(__dirname, "../frontend/dist"))); // or "build" if CRA
 // Catch-all route (so React Router works)
 
 app.get("/", (req, res) => {
