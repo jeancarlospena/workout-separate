@@ -77,18 +77,18 @@ app.use(async (req, res, next) => {
 // SERVING FROM THE SAME SITE
 // SERVING FROM THE SAME SITE
 // SERVING FROM THE SAME SITE
+// =============
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-// Serve frontend static files
+// // Serve frontend static files
 app.use(express.static(path.join(__dirname, "./frontend/dist"))); // or "build" if CRA
-console.log('==================')
-console.log(__dirname)
 // Catch-all route (so React Router works)
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/dist", 'index.html'));
+  res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
   // res.sendFile(path.join(__dirname, "./frontend/dist/index.html"));
 });
+// =============
+
 
 
 // SERVING FROM THE SAME SITE
