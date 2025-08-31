@@ -91,6 +91,9 @@ const __dirname = dirname(__filename);
 // app.get('/', (req, res) => {
 //   res.status(200).json({ filename: __filename, theurl: originUrl, dirname: __dirname, joined: path.join(__dirname, "./frontend/dist") })
 // })
+app.get('/', (req, res) => {
+  res.json({ message: 'hello there' })
+})
 // // Serve frontend static files
 app.use(express.static(path.join(__dirname, ".", "dist"))); // or "build" if CRA
 // Catch-all route (so React Router works)
