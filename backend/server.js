@@ -111,7 +111,7 @@ const __dirname = dirname(__filename);
 // // Serve frontend static files
 app.use(express.static(path.join(__dirname, "frontend", "dist"))); // or "build" if CRA
 // Catch-all route (so React Router works)
-app.get('/*splat', (req, res) => {
+app.get('/{*splat}', (req, res) => {
   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
