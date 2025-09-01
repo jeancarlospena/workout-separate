@@ -8,8 +8,8 @@
   "main": "server.js",
   "scripts": {
     "build": "npm install && npm install --prefix ./frontend && npm run build --prefix ./frontend",
-    "dev": "nodemon backend/server.js",
-    "start": "node backend/server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "dependencies": {
     "@arcjet/node": "^1.0.0-beta.10",
