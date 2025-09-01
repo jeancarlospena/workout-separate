@@ -1,0 +1,191 @@
+
+
+
+
+/* .workout-form input, .workout-form textarea, .workout-form button, .workout-form select{
+  color: black;
+} */
+
+.form-title{
+  margin: 10px 0 0;
+  font-size: var(--font-lg);
+}
+
+.form-label{
+  /* padding-top: 15px; */
+  margin-bottom: 5px;
+  color: var(--outline_light)
+}
+.top-label{
+  margin-top: 20px;
+}
+
+.form-input {
+  font-size: var(--font-s);
+  border-radius: 5px;
+  padding: 15px 10px;
+  margin-bottom: 15px;
+  background-color: var(--back_light);
+  border: 1px solid var(--outline_light);
+}
+
+
+
+.workout-form{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--back_light);
+  border-radius: 10px;
+  border: 1px solid var(--outline_light);
+  padding: 20px;
+  height: fit-content;
+}
+
+.l-form{
+  width: 40%;
+  /* height: fit-content; */
+  margin-right: 25px;
+
+}
+
+.r-form{
+  width: 60%;
+}
+
+.exercises-dash{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.exercise-view{
+  padding: 20px 0 ;
+  /* margin-bottom: 15px; */
+}
+
+.exercise-view:not(:last-child){
+  border-bottom: 1px solid var(--outline_light);
+
+}
+.exercise-view p:not(:last-child){
+  margin-bottom: 10px;
+}
+.exercise-view > p:first-child{
+  font-weight: bold;
+}
+
+.descriptive{
+  display: flex;
+}
+
+.descriptive p:last-child{
+  margin-left: 15px;
+}
+
+.split-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+
+
+.input-label-combo{
+  display: flex;
+  flex-direction: column;
+  width: 49%;
+}
+
+.p-title{
+  font-weight: bold;
+  margin-bottom: 15px;
+  /* color: var(--col5); */
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.exercises-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.exercises-container:not(:first-child){
+  /* border-top: 1px solid var(--col3);
+
+  padding-top: 20px; */
+  /* margin-top: 10px;  */
+}
+
+
+.add-exercise-button{
+  background-color: var(--col4);
+  width: 15px;
+  padding: 10px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  align-self: flex-end;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.exercise-indicator{
+  margin-bottom: 10px;
+}
+
+.exercise-counter{
+
+
+display: inline-flex;          /* center text horizontally & vertically */
+  justify-content: center;
+  align-items: center;
+  background-color: var(--col4);
+  border-radius: 50%;            /* makes it circular */
+  width: 24px;                   /* fixed size */
+  height: 24px;                  /* same as width */
+  font-size: 14px;               /* adjust text size */
+  margin-left: 5px;
+}
+
+.exercise-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.highlight-text{
+  color: var(--col4);
+  cursor: pointer;
+}
+
+
+.remove-spacer{
+  padding-left: 10px;
+  margin-left: auto;
+}
+
+.exercise-data{
+
+   border: 1px solid var(--outline_light);
+  padding: 4px 8px;
+  margin-left: 15px;
+  border-radius: 5px;
+  
+}
+
+.exercise-data-container{
+  margin: 15px 0;
+}
+
+@media (max-width: 1300px){
+  .exercises-dash{
+  flex-direction: column;
+}
+  .l-form, .r-form{
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .r-form{
+    margin-top: 25px;
+  }
+}
