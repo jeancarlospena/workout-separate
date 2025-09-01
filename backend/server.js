@@ -109,10 +109,10 @@ const __dirname = dirname(__filename);
 // });
 // TEST TEST TEST
 // // Serve frontend static files
-app.use(express.static(path.join(__dirname, "dist"))); // or "build" if CRA
+app.use(express.static(path.join(__dirname, "public"))); // or "build" if CRA
 // Catch-all route (so React Router works)
 app.get('/{*splat}', (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 // 
 
