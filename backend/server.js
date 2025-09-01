@@ -29,10 +29,10 @@ const originUrl = process.env.DEV_ENV === 'development' ? "http://localhost:3000
 
 // MIDDLEWARES
 app.use(express.json())
-// app.use(cors({
-//   origin: originUrl, // or your frontend URL
-//   credentials: true// allow cookies to be sent
-// }));
+app.use(cors({
+  origin: originUrl, // or your frontend URL
+  credentials: true// allow cookies to be sent
+}));
 app.use(cookieParser())
 // app.use(cors({ credentials: true }))
 app.use(helmet())
@@ -99,17 +99,20 @@ const __dirname = dirname(__filename);
 // app.get('/', (req, res) => {
 //   res.json({ message: 'hello there' })
 // })
+// WORKS WORKS WORKS
 // // Serve frontend static files
-app.use(express.static(path.join(__dirname, ".", "public"))); // or "build" if CRA
+// app.use(express.static(path.join(__dirname, ".", "frontend", "dist"))); // or "build" if CRA
+// // Catch-all route (so React Router works)
+// app.get('/{*splat}', (req, res) => {
+//   res.sendFile(path.join(__dirname, ".", "dist", "frontend", "index.html"));
+// });
+// TEST TEST TEST
+// // Serve frontend static files
+app.use(express.static(path.join(__dirname, ".", "dist"))); // or "build" if CRA
 // Catch-all route (so React Router works)
-
-
-
 app.get('/{*splat}', (req, res) => {
-  res.sendFile(path.join(__dirname, ".", "public", "index.html"));
+  res.sendFile(path.join(__dirname, ".", "dist", "index.html"));
 });
-
-
 
 // server running
 initDB().then(() => {
