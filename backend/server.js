@@ -80,9 +80,7 @@ app.use("/api", async (req, res, next) => {
 //   res.status(200).json({ message: 'ok you are here', theurl: originUrl })
 // })
 
-app.get('/api', (req, res) => {
-  res.send('hit hit hit')
-})
+
 
 // routes
 app.use('/api/products', productRoutes)
@@ -111,10 +109,10 @@ const __dirname = dirname(__filename);
 // });
 // TEST TEST TEST
 // // Serve frontend static files
-app.use(express.static(path.join(__dirname, "public", "dist"))); // or "build" if CRA
+app.use(express.static(path.join(__dirname, "frontend", "dist"))); // or "build" if CRA
 // Catch-all route (so React Router works)
 app.get('/*splat', (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
 // server running
