@@ -80,7 +80,7 @@ app.use("/api", async (req, res, next) => {
 //   res.status(200).json({ message: 'ok you are here', theurl: originUrl })
 // })
 
-app.post('/api', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('hit hit hit')
 })
 
