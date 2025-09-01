@@ -39,47 +39,50 @@ app.use(helmet())
 app.use(morgan('dev')) // log the requests
 
 // apply arcjet rate-limit to all routes
-// app.use("/api", async (req, res, next) => {
-//   try {
-//     const decision = await aj.protect(req, {
-//       requested: 1, // specifies that each request consumes 1 token
-//       // limit: { // depends on Arcjet plan
-//       //   type: "fixed_window",
-//       //   interval: "1s",
-//       //   max: 50 // allow 50 req/s
-//       // }
-//     })
-//     if (decision.isDenied()) {
-//       if (decision.reason.isRateLimit()) {
-//         res.status(429).json({
-//           error: 'Too many requests'
-//         })
-//       } else if (decision.reason.isBot()) {
-//         res.status(403).json({ error: "Bot access denied" })
-//       } else {
-//         res.status(403).json({ error: 'Forbidden' })
-//       }
-//       return
-//     }
+app.use("/api", async (req, res, next) => {
+  try {
+    const decision = await aj.protect(req, {
+      requested: 1, // specifies that each request consumes 1 token
+      // limit: { // depends on Arcjet plan
+      //   type: "fixed_window",
+      //   interval: "1s",
+      //   max: 50 // allow 50 req/s
+      // }
+    })
+    if (decision.isDenied()) {
+      if (decision.reason.isRateLimit()) {
+        res.status(429).json({
+          error: 'Too many requests'
+        })
+      } else if (decision.reason.isBot()) {
+        res.status(403).json({ error: "Bot access denied" })
+      } else {
+        res.status(403).json({ error: 'Forbidden' })
+      }
+      return
+    }
 
-//     // check for spoofed bots
-//     if (decision.results.some((result) => result.reason.isBot() && result.reason.isSpoofed())) {
-//       res.status(403).json({ error: 'Spoofed bot detected' })
-//       return
-//     }
+    // check for spoofed bots
+    if (decision.results.some((result) => result.reason.isBot() && result.reason.isSpoofed())) {
+      res.status(403).json({ error: 'Spoofed bot detected' })
+      return
+    }
 
-//     next()
-//   } catch (error) {
-//     console.log('Arject error', error)
-//     next(error)
-//   }
-// })
+    next()
+  } catch (error) {
+    console.log('Arject error', error)
+    next(error)
+  }
+})
 
 
 // app.get('/', (req, res) => {
 //   res.status(200).json({ message: 'ok you are here', theurl: originUrl })
 // })
 
+app.post('/api', (req, res) => {
+  res.send('hit hit hit')
+})
 
 // routes
 app.use('/api/products', productRoutes)
