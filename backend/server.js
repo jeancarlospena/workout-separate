@@ -114,6 +114,7 @@ app.use(express.static(path.join(__dirname, "dist"))); // or "build" if CRA
 app.get('/{*splat}', (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
+// 
 
 // server running
 initDB().then(() => {
