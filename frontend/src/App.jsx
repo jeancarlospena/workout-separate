@@ -9,7 +9,6 @@ import Exercises from "./components/Exercises.jsx";
 import Customize from "./pages/Customize.jsx";
 import Nutrition from "./pages/Nutrition.jsx";
 import WorkoutLog from "./pages/WorkoutLog.jsx";
-import React from "react";
 
 const App = () => {
   const { authLoaded, user } = useContext(UserContext);

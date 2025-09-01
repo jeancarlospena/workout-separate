@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { createContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext.jsx";
-import React from "react";
 
 export const WorkoutContext = createContext();
 

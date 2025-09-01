@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const devModeUrl = "/api";
 
 const API = axios.create({
-  baseURL: devModeUrl,
+  baseURL: "/api",
   withCredentials: true, // send/receive cookies
 });
 
