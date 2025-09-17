@@ -12,6 +12,7 @@ import "./style/navigator.css";
 import "./style/nutrition.css";
 import "./style/workoutlog.css";
 import "./style/userhome.css";
+import "./style/userreview.css";
 
 import UserContextProvider from "./context/UserContext.jsx";
 import WorkoutContextProvider from "./context/WorkoutContext.jsx";

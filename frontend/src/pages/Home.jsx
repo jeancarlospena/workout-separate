@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Register from "../components/Register.jsx";
 import Login from "../components/Login.jsx";
+import UserReview from "../components/UserReview.jsx";
 
 const Home = () => {
   const [authForm, setAuthForm] = useState("login");
   return (
     <div className="home">
       <div className="home-intro">
-        <h1>good morning</h1>
         <h1 className="home-title">
           Belly <span className="col-title">Off </span>Blueprint
         </h1>
@@ -38,6 +38,7 @@ const Home = () => {
         <img className="bottom-center" src="DD.svg" alt="" />
       </div>
       <div className="home-informational">
+        <UserReview />
         <h3 className="home-title">
           Is This the Breakthrough Your Body’s Been Waiting For?
         </h3>
