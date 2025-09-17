@@ -6,7 +6,7 @@ const UserReview = () => {
       <div className="single-review">
         <div className="single-review-body">
           <img src="gold-quotes.webp" alt="" />
-          <p>No issues witht he platform. Loved it!</p>
+          <p>No issues with the platform. Loved it!</p>
           <b>Charles R.</b>
         </div>
       </div>
@@ -28,7 +28,7 @@ const UserReview = () => {
         <div className="single-review-body">
           <img src="gold-quotes.webp" alt="" />
           <p>Immediately felt and saw results!</p>
-          <b>Mathew D.</b>
+          <b>Matthew D.</b>
         </div>
       </div>
       <div className="single-review">
