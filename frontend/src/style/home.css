@@ -152,6 +152,8 @@ margin-top: 40px;
   line-height: 45px;
   padding: 25px 35px ;
   border-radius: 5px;
+  box-shadow: 0 8px 24px rgba(234, 129, 129, .15);
+
 }
 
 .news-letter{

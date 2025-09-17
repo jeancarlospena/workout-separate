@@ -35,6 +35,8 @@
   align-items: center;
   text-align: center;
   justify-content: center;
+   /* shadow */
+  box-shadow: 0 8px 24px rgba(234, 129, 129, .15);
 }
 
 .single-review-body b{
